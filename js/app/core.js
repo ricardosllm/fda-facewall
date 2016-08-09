@@ -69,7 +69,7 @@ define(["jquery","aws", "app/config", "timersjs"],function($,a,c,ts){
 		    };
 
       var dynamodbOptions = {
-        region: 'ap-northeast-1'
+        region: AWS.config.region
       };
         var dynamodb = new AWS.DynamoDB(dynamodbOptions);
       console.log(dynamodb);
@@ -134,38 +134,31 @@ define(["jquery","aws", "app/config", "timersjs"],function($,a,c,ts){
 		    {
 		        timeStamp = lastDiv.text();
 		    }    
-		    console.log(timeStamp)
-		    var params = {
-		        TableName: 'snapshot',
-		        IndexName: 'cameraid-unixtimestamp-index', // optional (if querying an index)
-		        KeyConditions: { // indexed attributes to query
-		                     // must include the hash key value of the table or index 
-		                     // with 'EQ' operator
-		            cameraid: {
-		                ComparisonOperator: 'EQ', // (EQ | NE | IN | LE | LT | GE | GT | BETWEEN | 
-		                                      //  NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH)
-		                AttributeValueList: [ { S: cameraid }, ],
-		            },
-		            unixtimestamp: {
-		                ComparisonOperator: 'GT', // (EQ | NE | IN | LE | LT | GE | GT | BETWEEN | 
-		                                      //  NOT_NULL | NULL | CONTAINS | NOT_CONTAINS | BEGINS_WITH)
-		                AttributeValueList: [ { N: timeStamp.toString() }, ],
-		            },
-
-		            // more key conditions ...
-		        },
-		        ScanIndexForward: true, // optional (true | false) defines direction of Query in the index
-		        Limit: 20, // optional (limit the number of items to evaluate)
-		        ConsistentRead: false, // optional (true | false)
-		        Select: 'ALL_ATTRIBUTES', // optional (ALL_ATTRIBUTES | ALL_PROJECTED_ATTRIBUTES | 
-		                              //           SPECIFIC_ATTRIBUTES | COUNT)
-		        ReturnConsumedCapacity: 'NONE', // optional (NONE | TOTAL | INDEXES)
-		    };
+      console.log(timeStamp);
+      var params = {
+        TableName: 'snapshot',
+        IndexName: 'cameraid-unixtimestamp-index',
+        KeyConditions: {
+          cameraid: {
+            ComparisonOperator: 'EQ',
+            AttributeValueList: [ { S: cameraid }, ]
+          },
+          unixtimestamp: {
+            ComparisonOperator: 'GT',
+            AttributeValueList: [ { N: timeStamp.toString() }, ]
+          }
+        },
+        ScanIndexForward: true,
+        Limit: 20,
+        ConsistentRead: false,
+        Select: 'ALL_ATTRIBUTES',
+        ReturnConsumedCapacity: 'NONE'
+      };
       var dynamodbOptions = {
-        region: 'ap-northeast-1'
+        region: AWS.config.region
       };
         var dynamodb = new AWS.DynamoDB(dynamodbOptions);
-		    dynamodb.query(params, function(err, data) {
+        dynamodb.query(params, function(err, data) {
 		        if (err) 
 		        {
 		            console.log(err);

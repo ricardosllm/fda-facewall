@@ -60,7 +60,7 @@ define(["jquery","aws", "app/config", "timersjs"],function($,a,c,ts){
 		   	console.log("initDashboardTimer run");
 
 		    var params = {
-		        TableName: 'resources-counter',
+          TableName: c.AWS.resourcesCountTable,
 		        Key: { 
 		            id: {
 		            	S: cameraid 
@@ -136,7 +136,7 @@ define(["jquery","aws", "app/config", "timersjs"],function($,a,c,ts){
 		    }    
       console.log(timeStamp);
       var params = {
-        TableName: 'snapshot',
+        TableName:  c.AWS.snapshotTable,
         IndexName: 'cameraid-unixtimestamp-index',
         KeyConditions: {
           cameraid: {

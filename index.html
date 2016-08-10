@@ -17,7 +17,6 @@
     <!-- Latest compiled and minified JavaScript -->
     <script data-main="js/photowall" src="js/lib/require.js"></script>
 
-
     <style>
 
     /* GLOBAL STYLES
@@ -254,30 +253,26 @@
       <div class="cameracell dashboardpanel" style="width:98%;">
         <table width="80%">
           <tr>
-            <td width=20%><img src="images/big_pbaws_logo_300px.jpg" style="width:auto;height:50px;margin-top:10px; "/></td>
+              <td width=20%>
+                  <img src="images/big_pbaws_logo_300px.jpg"
+                       style="width:auto;height:50px;margin-top:10px; "/>
+              </td>
             <td width=60%>
-              <h1>Facewall app</h1>
+              <h1>Facewall</h1>
             </td>
-          </tr>
-        </table>
-      </div>
-      <div class="cameracell dashboardpanel" style="width:20%;display:none;"><img src="images/big_pbaws_logo_300px.jpg" style="width:120px;height:auto;margin-top: 15px;display:none;"/></div>
-      <div class="cameracell dashboardpanel" style="width:48%;">
-        <table>
-          <tr>
-            <td><img src="images/Deck_SecurityCamera.png" class="cameraicon icon"/></td>
-            <td>
-              <div class="writephoto" style="margin-left:0px;margin-right:0px;">
-                <img src="images/right208.svg" class="arrowright"  />
-              </div>
-            </td>
-            <td><img src="images/S3-Bucket.svg" class="icon" /><td>
+
             <td style="text-align:center;padding-left:10px;padding-right:10px;">
                 <span id="lblraws3counter" class="counter"> -- </span><br>Photos
 
             </td>
+
           </tr>
         </table>
+      </div>
+      <div class="cameracell dashboardpanel"
+           style="width:20%;display:none;">
+          <img src="images/big_pbaws_logo_300px.jpg"
+               style="width:120px;height:auto;margin-top: 15px;display:none;"/>
       </div>
       <div class="cameracell dashboardpanel" style="display:none;">
         <table>
@@ -294,7 +289,13 @@
         <table width="100%">
           <tr>
             <td style="padding-top:16px;">
-                <button id="btnStream" class="btn btn-danger btn-lg " label-active="Stop streaming" label-inactive="Start streaming" style="width100%;">Start Streaming</button>
+                <button id="btnStream"
+                        class="btn btn-danger btn-lg "
+                        label-active="Stop streaming"
+                        label-inactive="Start streaming"
+                        style="width100%;">
+                    Start Streaming
+                </button>
             </td>
           </tr>
         </table>
@@ -303,15 +304,13 @@
     </div>
     <div style="clear:both"></div>
     <div class="cameracell photowallpanel" >
-              <div id="box-container">
-                <div id="entry-list" class="row">
-                </div> <!-- .entry-list -->
-              </div>
-              <div id="last-timestamp" style="padding-top:20px; padding-left:20px;"></div>
-
-
+        <div id="box-container">
+            <div id="entry-list" class="row">
+            </div> <!-- .entry-list -->
+        </div>
+        <div id="last-timestamp"
+             style="padding-top:20px; padding-left:20px;">
+        </div>
     </div>
-
-    <a href="http://www.freepik.com/free-vector/avatars-in-cartoon-style_766799.htm">Designed by Freepik</a>
   </body>
 </html>
